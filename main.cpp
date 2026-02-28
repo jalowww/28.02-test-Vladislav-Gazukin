@@ -57,7 +57,6 @@ int main() {
     Tracer t("A");
     v.push_back(t);
     v.push_back(t);
-
     show("push_back with lvalue (copies)");
   }
 
@@ -65,11 +64,9 @@ int main() {
     Tracer::reset();
     std::vector<Tracer> v;
     v.reserve(2);
-
     Tracer t("A");
     v.push_back(std::move(t));
     v.push_back(Tracer("B"));
-
     show("push_back with move/temporary (moves)");
   }
 
@@ -77,10 +74,8 @@ int main() {
     Tracer::reset();
     std::vector<Tracer> v;
     v.reserve(2);
-
     v.push_back(Tracer("X"));
     v.emplace_back("Y");
-
     show("push_back(temp) vs emplace_back");
   }
 
@@ -95,3 +90,4 @@ int main() {
   }
   return 0;
 }
+
