@@ -3,7 +3,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-
 struct Tracer {
   static inline std::size_t ctor = 0;
   static inline std::size_t dtor = 0;
@@ -13,7 +12,6 @@ struct Tracer {
   static inline std::size_t move_assign = 0;
 
   std::string s;
-
   Tracer() { ++ctor; }
   explicit Tracer(std::string str) : s(std::move(str)) { ++ctor; }
 
@@ -90,13 +88,10 @@ int main() {
     Tracer::reset();
     std::vector<Tracer> v;
     v.reserve(5);
-
     v.resize(3);
     v.resize(5);
     v.resize(2);
-
     show("resize");
   }
-
   return 0;
 }
